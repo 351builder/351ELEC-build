@@ -13,8 +13,7 @@ RUN apt-get update  \
       && apt-get clean -y \
       && rm -rf /var/lib/apt/lists/*
 
-RUN adduser --disabled-password --gecos '' docker \
- && adduser docker
+RUN adduser --disabled-password --gecos '' docker
 
 RUN mkdir -p /work && chown docker /work
 
