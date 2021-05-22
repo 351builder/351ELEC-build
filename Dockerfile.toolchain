@@ -1,0 +1,10 @@
+FROM 351build/351elec-build:latest
+USER root
+RUN mkdir -p /work && chown docker /work
+USER docker
+
+RUN git clone https://github.com/351ELEC/351ELEC.git /work/351ELEC \
+    && cd /work/351ELEC  \
+    && DISTRO=351ELEC PROJECT=Rockchip DEVICE=RG351P ARCH=aarch64 \
+    ./scripts/build toolchain
+
