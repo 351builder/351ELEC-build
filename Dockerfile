@@ -12,3 +12,10 @@ RUN apt-get update  \
       && apt-get autoremove --purge -y \
       && apt-get clean -y \
       && rm -rf /var/lib/apt/lists/*
+
+RUN adduser --disabled-password --gecos '' docker \
+ && adduser docker sudo \
+ && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER docker
+WORKDIR /work
